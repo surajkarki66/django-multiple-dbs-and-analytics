@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "college",
+    "university",
+    "organization",
 ]
 
 MIDDLEWARE = [
@@ -74,12 +77,36 @@ WSGI_APPLICATION = 'django_multiple_dbs.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': {},
+    'auth_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'auth.db.sqlite3',
+    },
+    "college_db": {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'college.db.sqlite3',
+    },
+    "university_db": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "university",
+        'USER': "db_user",
+        'PASSWORD': "admin",
+        'PORT': 5432,
+        'HOST': "localhost",
+    },
+    "organization_db": {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'organization',
+        'USER': 'surajkarki',
+        'PASSWORD': 'suraj123',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
+
 }
 
+DATABASE_ROUTERS = ["routers.db_routers.AuthRouter",
+                    "routers.db_routers.College", "routers.db_routers.University", "routers.db_routers.Organization"]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
