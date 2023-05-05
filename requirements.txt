@@ -1,3 +1,5 @@
 django
 mysqlclient
 psycopg2
+django-crispy-forms
+crispy-bootstrap4

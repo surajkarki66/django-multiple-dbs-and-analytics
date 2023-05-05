@@ -41,7 +41,7 @@ class AuthRouter:
 
 
 class College:
-    route_app_labels = {"college",}
+    route_app_labels = {"college"}
 
     def db_for_read(self, model, **hints):
         if model._meta.app_label in self.route_app_labels:
@@ -65,7 +65,7 @@ class College:
 
 
 class University:
-    route_app_labels = {"university",}
+    route_app_labels = {"university"}
 
     def db_for_read(self, model, **hints):
         if model._meta.app_label in self.route_app_labels:
@@ -89,7 +89,7 @@ class University:
 
 
 class Organization:
-    route_app_labels = {"organization",}
+    route_app_labels = {"organization"}
 
     def db_for_read(self, model, **hints):
         if model._meta.app_label in self.route_app_labels:
