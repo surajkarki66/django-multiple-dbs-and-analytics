@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+from rest_framework import viewsets
 
 from .models import University
+from .serializers import UniversitySerializer
 from .forms import UniversityForm
 
-# Create your views here.
+
 def university(request):
     university = University.objects.using("university_db").all()
   
@@ -20,3 +22,10 @@ def university(request):
         'form': form,
     }
     return render(request, "university/university.html", context)
+
+
+class UniversityViewSet(viewsets.ModelViewSet):
+    queryset = University.objects.using("university_db").all()
+    serializer_class = UniversitySerializer
+
+   
