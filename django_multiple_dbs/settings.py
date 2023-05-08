@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "college",
     "university",
     "organization",
+    "book",
     'crispy_forms',
     "crispy_bootstrap4",
     "rest_framework",
@@ -94,6 +95,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'college.db.sqlite3',
     },
+    "book_db": {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'book.db.sqlite3',
+    },
     "university_db": {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "university",
@@ -114,7 +119,7 @@ DATABASES = {
 }
 
 DATABASE_ROUTERS = ["routers.db_routers.AuthRouter",
-                    "routers.db_routers.College", "routers.db_routers.University", "routers.db_routers.Organization"]
+                    "routers.db_routers.College", "routers.db_routers.University", "routers.db_routers.Organization", "routers.db_routers.Book"]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
