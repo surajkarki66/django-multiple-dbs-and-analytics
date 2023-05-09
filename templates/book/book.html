@@ -1,0 +1,31 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+               <h2>Aggregation</h2>
+               <p>Sum: {{data.sum}}</p>
+               <p>Max: {{data.max}}</p>
+               <p>Min: {{data.min}}</p>
+               <p>Avg: {{data.avg}}</p>
+               <p>Rating difference: {{rating_diff.rating_diff}}</p>
+               <p>Oldest publication date: {{oldest_pub_date.oldest_pub_date}}</p>
+               <p>Treasure  Price: {{tr_price.ratings_count__avg}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            {% for book in book %}
+            Name: {{ book.title }} <br>
+            Author: {{ book.authors }} <br>
+            Average Rating: {{ book.average_rating }} <br>
+            <br>
+            
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
