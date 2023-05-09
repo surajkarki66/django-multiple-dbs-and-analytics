@@ -7,21 +7,18 @@
             <div class="card shadow">
                 <div class="card-body">
                <h2>Aggregation</h2>
-               <p>Sum: {{data.sum}}</p>
-               <p>Max: {{data.max}}</p>
-               <p>Min: {{data.min}}</p>
-               <p>Avg: {{data.avg}}</p>
-               <p>Rating difference: {{rating_diff.rating_diff}}</p>
-               <p>Oldest publication date: {{oldest_pub_date.oldest_pub_date}}</p>
-               <p>Treasure  Price: {{tr_price.ratings_count__avg}}</p>
+               <p>Total books count: {{total_books_count}}</p>
+               <p>Total no of Bloomsburry books count: {{total_no_of_bloomsbury_books}}</p>
+               <p>Average Price: {{avg_price.price__avg}}</p>
+               <p>Max Price: {{max_price.price__max}}</p>
+               <p>Min Price: {{min_price.price__min}}</p>
+               <p>Price Difference: {{price_diff.price_diff}}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
             {% for book in book %}
-            Name: {{ book.title }} <br>
-            Author: {{ book.authors }} <br>
-            Average Rating: {{ book.average_rating }} <br>
+            Name: {{ book.name }} <br>
             <br>
             
             {% endfor %}

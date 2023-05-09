@@ -1,19 +1,36 @@
 from django.db import models
-from django.utils.translation import gettext as _
-from django.conf import settings
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+
+class Publisher(models.Model):
+    name = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.name
+
 
 class Book(models.Model):
-  title = models.CharField(_("title"), max_length=255)
-  authors = models.CharField(_("authors"), max_length=255)
-  average_rating = models.FloatField(_("average rating"))
-  isbn = models.CharField(_("isbn"), max_length=150)
-  isbn13 = models.CharField(_("isbn 13"), max_length=150)
-  language_code = models.CharField(_("language code"), max_length=10)
-  num_pages = models.IntegerField(_("number of pages"))
-  ratings_count = models.BigIntegerField(_("rating count"))
-  text_review_count = models.BigIntegerField(_("text review count"))
-  publication_date = models.DateField(_("publication date"))
-  publisher = models.CharField(_("publisher"), max_length=150)
+    name = models.CharField(max_length=300)
+    pages = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    rating = models.FloatField()
+    authors = models.ManyToManyField(Author)
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+    pubdate = models.DateField()
 
-  def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.name
+
+
+class Store(models.Model):
+    name = models.CharField(max_length=300)
+    books = models.ManyToManyField(Book)
+
+    def __str__(self):
+        return self.name
